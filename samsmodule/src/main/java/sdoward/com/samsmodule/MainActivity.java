@@ -2,8 +2,10 @@ package sdoward.com.samsmodule;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.TextView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -14,7 +16,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView textView;
+    RecyclerView recyclerView;
     BreweriesService breweriesService = new Retrofit.Builder()
             .baseUrl("https://api.openbrewerydb.org/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -25,17 +27,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = findViewById(R.id.textView);
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, 1);
+        recyclerView.addItemDecoration(dividerItemDecoration);
         breweriesService.getBreweries()
                 .enqueue(new Callback<List<Brewery>>() {
                     @Override
                     public void onResponse(Call<List<Brewery>> call, Response<List<Brewery>> response) {
                         List<Brewery> breweries = response.body();
-                        String breweriesList = "";
-                        for (Brewery brewery : breweries) {
-                            breweriesList = breweriesList + brewery.name + System.getProperty("line.separator");
-                        }
-                        textView.setText(breweriesList);
+                        BreweryAdapter breweryAdapter = new BreweryAdapter(breweries);
+                        recyclerView.setAdapter(breweryAdapter);
                     }
 
                     @Override
