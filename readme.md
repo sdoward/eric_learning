@@ -20,3 +20,5 @@ Below are the tasks to complete in order to make a functioning android app. I wi
 - [Task3 - Data modeling and Json](https://github.com/sdoward/eric_learning/blob/master/tasks/task3.md)
 
 - [Task4 - Deserialization](https://github.com/sdoward/eric_learning/blob/master/tasks/task4.md)
+
+- [Task5 - Network calls](https://github.com/sdoward/eric_learning/blob/master/tasks/task5.md)

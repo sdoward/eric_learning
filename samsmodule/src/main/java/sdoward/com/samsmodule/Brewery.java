@@ -12,7 +12,6 @@ public class Brewery {
     String country;
     Double latitude;
     Double longitude;
-    long phone;
     String website_url;
     String updated_at;
 }
