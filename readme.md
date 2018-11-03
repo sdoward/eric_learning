@@ -24,3 +24,5 @@ Below are the tasks to complete in order to make a functioning android app. I wi
 - [Task5 - Network calls](https://github.com/sdoward/eric_learning/blob/master/tasks/task5.md)
 
 - [Task6 - RecyclerView](https://github.com/sdoward/eric_learning/blob/master/tasks/task6.md)
+
+- [Task7 - Git branching and Pull Requests](https://github.com/sdoward/eric_learning/blob/master/tasks/task6.md)
