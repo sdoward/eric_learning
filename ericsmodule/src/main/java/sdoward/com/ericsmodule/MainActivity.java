@@ -14,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    Beer beer = (Beer) new Retrofit.Builder()
+    BeerService beerService = new Retrofit.Builder()
             .baseUrl("https://api.punkapi.com/v2/beers/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView=findViewById(R.id.myTextView);
-       BeerService.getBeers()
+        beerService.getBeer()
                .enqueue(new Callback<List<Beer>>() {
                    @Override
                    public void onResponse(Call<List<Beer>> call, Response<List<Beer>> response) {
