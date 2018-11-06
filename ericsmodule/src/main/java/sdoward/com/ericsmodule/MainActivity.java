@@ -14,15 +14,15 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    TextView textView;
     BeerService beerService = new Retrofit.Builder()
-            .baseUrl("https://api.punkapi.com/v2/beers/")
+            .baseUrl("https://api.punkapi.com/v2/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(BeerService.class);
 
-    TextView textView;
 
-    Gson gson = new Gson();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                    }
 
                    @Override
-                   public void onFailure(Call<List<Beer>> call, Throwable t) {
+                   public void onFailure(Call<List<Beer>> call, Throwable throwable) {
                        Log.d("Main activity","unable to get data" );
 
                    }
