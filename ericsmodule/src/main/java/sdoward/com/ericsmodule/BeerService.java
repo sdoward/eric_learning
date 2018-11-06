@@ -6,6 +6,6 @@ import retrofit2.http.GET;
 import java.util.List;
 
 public interface BeerService {
-    @GET ("beer")
+    @GET ("beers")
     Call<List<Beer>>getBeer();
 }
