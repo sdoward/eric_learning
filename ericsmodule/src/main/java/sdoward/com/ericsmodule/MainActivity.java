@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
                    @Override
                    public void onFailure(Call<List<Beer>> call, Throwable throwable) {
-                       Log.d("Main activity","unable to get data" );
+                       Log.e("Main activity", "Unable to get data", throwable);
 
                    }
                });

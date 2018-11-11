@@ -9,7 +9,7 @@ public class Beer {
         String description;
         String image_url;
         Float abv;
-        int attenuation_level;
+        Float attenuation_level;
         String brewers_tips;
         String contributed_by;
 }
