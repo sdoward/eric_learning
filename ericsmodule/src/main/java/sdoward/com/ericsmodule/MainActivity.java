@@ -2,6 +2,9 @@ package sdoward.com.ericsmodule;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 import com.google.gson.Gson;
@@ -15,7 +18,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView textView;
+    RecyclerView recyclerView;
     BeerService beerService = new Retrofit.Builder()
             .baseUrl("https://api.punkapi.com/v2/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -27,19 +30,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView=findViewById(R.id.myTextView);
+        recyclerView=findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, 1);
+        recyclerView.addItemDecoration(dividerItemDecoration);
         beerService.getBeer()
                .enqueue(new Callback<List<Beer>>() {
                    @Override
                    public void onResponse(Call<List<Beer>> call, Response<List<Beer>> response) {
                        List<Beer> beer= response.body();
-                       String beerList="";
-                       for (Beer beers: beer ){
-                           beerList=beerList + beers.name + System.getProperty("line.separator");
-                       }
-                       textView.setText(beerList);
-
-                   }
+                       BeerAdapter beerAdapter= new BeerAdapter(beer);
+                       recyclerView.setAdapter(beerAdapter);
+                                         }
 
                    @Override
                    public void onFailure(Call<List<Beer>> call, Throwable throwable) {

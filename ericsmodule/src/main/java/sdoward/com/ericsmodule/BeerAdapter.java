@@ -19,7 +19,7 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.ViewHolder> {
     private  List<Beer> beers;
     private Context context;
 
-    public BeerAdapter(List<Beer> beers, Context context){
+    public BeerAdapter(List<Beer> beers){
         this.beers=beers;
         this.context = context;
     }
@@ -32,6 +32,7 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.ViewHolder> {
         return new BeerAdapter.ViewHolder(v);
 
 
+
     }
 
 
@@ -39,24 +40,13 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull BeerAdapter.ViewHolder beerViewHolder, int i) {
 
 
-      Glide.with(context);
-           .load(beers);
-           .into(beerViewHolder.imageView);
-
-            String toString;{
-            Float floatInstance = new Float(beer.abv);
-            String numberAsString = floatInstance.toString();
-        }
-
-        
-
           Beer beer = beers.get(i);
         //beerViewHolder.imageView.setImageBitmap(beer.image_url);
-        beerViewHolder.IdTextView.setText(beer.id);
+        //beerViewHolder.IdTextView.setText(beer.id);
         beerViewHolder.nameTextView.setText(beer.name);
         beerViewHolder.taglineTextView.setText(beer.tagline);
         beerViewHolder.firstBrewTextView.setText(beer.first_brewed);
-        beerViewHolder.abvTextView.setText(beer.abv);
+        //beerViewHolder.abvTextView.setText(beer.abv);
         //beerViewHolder.attenuationLevelTextView.set(beer.attenuation_level);
         beerViewHolder.descriptionTextView.setText(beer.description);
 
@@ -90,9 +80,8 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.ViewHolder> {
             this.attenuationLevelTextView=itemView.findViewById(R.id.attenuationLevelTextView);
             this.descriptionTextView=itemView.findViewById(R.id.descriptionTextView);
         }
-        public void main(String args[]){
-            String str =Float.toString(beer.abv);
 
-        }
+
+
     }
 }
