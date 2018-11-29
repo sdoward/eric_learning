@@ -42,15 +42,16 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.ViewHolder> {
 
           Beer beer = beers.get(i);
         //beerViewHolder.imageView.setImageBitmap(beer.image_url);
-        //beerViewHolder.IdTextView.setText(beer.id);
+        beerViewHolder.IdTextView.setText(String.valueOf(beer.id));
         beerViewHolder.nameTextView.setText(beer.name);
         beerViewHolder.taglineTextView.setText(beer.tagline);
         beerViewHolder.firstBrewTextView.setText(beer.first_brewed);
-        //beerViewHolder.abvTextView.setText(beer.abv);
-        //beerViewHolder.attenuationLevelTextView.set(beer.attenuation_level);
+        beerViewHolder.abvTextView.setText(String.valueOf(beer.abv));
+        beerViewHolder.attenuationLevelTextView.setText(String.valueOf(beer.attenuation_level));
         beerViewHolder.descriptionTextView.setText(beer.description);
 
     }
+    +
 
     @Override
     public int getItemCount() {
