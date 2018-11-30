@@ -20,6 +20,7 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.ViewHolder> {
     private Context context;
 
     public BeerAdapter(List<Beer> beers){
+
         this.beers=beers;
         this.context = context;
     }
@@ -32,7 +33,6 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.ViewHolder> {
         return new BeerAdapter.ViewHolder(v);
 
 
-
     }
 
 
@@ -41,6 +41,11 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.ViewHolder> {
 
 
           Beer beer = beers.get(i);
+
+        Glide.with(context)
+                .load(beer.image_url)
+                .into(beerViewHolder.imageView);
+
         //beerViewHolder.imageView.setImageBitmap(beer.image_url);
         beerViewHolder.IdTextView.setText(String.valueOf(beer.id));
         beerViewHolder.nameTextView.setText(beer.name);
@@ -51,7 +56,6 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.ViewHolder> {
         beerViewHolder.descriptionTextView.setText(beer.description);
 
     }
-    +
 
     @Override
     public int getItemCount() {
