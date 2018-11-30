@@ -13,7 +13,7 @@ Make some changes to your code and open a PR. Sam will review and then you can m
 ### Steps to complete
 
 1. Create a new branch. This should be named in a way that describes the work that will be done.
-2. Make some changes to your code. This can be anything you like. Change some text styles, add more data to the ui etc.
+2. Make some changes to your code. This can be anything you like. Change some text styles, add more data to the ui, add a constructor to `Beer` class
 3. Commit those changes to the new branch.
 4. Publish that branch to github (publishing a branch is like pushing a commit)
 5. Go to https://github.com/sdoward/eric_learning and you should see a button asking if you want to open a Pull Request. Click it and open the pull request
