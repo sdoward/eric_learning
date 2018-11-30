@@ -1,4 +1,4 @@
-## Task 5 - RecyclerView
+## Task 6 - RecyclerView
 
 ### Objective - Use recyclerview to make the visuals look nicer
 
