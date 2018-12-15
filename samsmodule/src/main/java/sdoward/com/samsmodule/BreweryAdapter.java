@@ -28,8 +28,8 @@ public class BreweryAdapter extends RecyclerView.Adapter<BreweryAdapter.BreweryV
     @Override
     public void onBindViewHolder(@NonNull BreweryViewHolder breweryViewHolder, int i) {
         Brewery brewery = breweries.get(i);
-        breweryViewHolder.nameTextView.setText(brewery.name);
-        breweryViewHolder.typeTextView.setText(brewery.brewery_type);
+        breweryViewHolder.nameTextView.setText(brewery.getName());
+        breweryViewHolder.typeTextView.setText(brewery.getBreweryType());
     }
 
     @Override
