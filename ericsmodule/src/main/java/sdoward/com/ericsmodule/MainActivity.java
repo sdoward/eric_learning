@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
                    @Override
                    public void onResponse(Call<List<Beer>> call, Response<List<Beer>> response) {
                        List<Beer> beer= response.body();
-                       BeerAdapter beerAdapter= new BeerAdapter(beer);
+                       BeerAdapter beerAdapter= new BeerAdapter(beer,MainActivity.this);
                        recyclerView.setAdapter(beerAdapter);
                                          }
 
