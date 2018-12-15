@@ -4,7 +4,7 @@ public class Brewery {
 
     int id;
     String name;
-    String brewery_type;
+    String brewery_type;  
     String street;
     String city;
     String state;
