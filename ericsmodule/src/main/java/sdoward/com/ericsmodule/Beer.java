@@ -1,37 +1,34 @@
 package sdoward.com.ericsmodule;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Beer {
 
         int id;
         String name;
         String tagline;
-        String first_brewed;
+        @SerializedName("first_brewed")String firstBrewed;
         String description;
-        String image_url;
+        @SerializedName("image_url")String imageUrl;
         Float abv;
-        Float attenuation_level;
-        String brewers_tips;
-        String contributed_by;
+        @SerializedName("attenuation_level")Float attenuationLevel;
+        @SerializedName("brewers_tips")String brewersTips;
+        @SerializedName("contributed_by")String contributedBy;
 
-        public Beer(int id, String name, String tagline, String first_brewed, String description, String image_url, Float abv, Float attenuation_level, String brewers_tips, String contributed_by) {
-                this.id = id;
-                this.name = name;
-                this.tagline = tagline;
-                this.first_brewed = first_brewed;
-                this.description = description;
-                this.image_url = image_url;
-                this.abv = abv;
-                this.attenuation_level = attenuation_level;
-                this.brewers_tips = brewers_tips;
-                this.contributed_by = contributed_by;
-
-
-
-
-
-
+    public Beer(int id, String name, String tagline, String firstBrewed, String description, String imageUrl, Float abv, Float attenuationLevel, String brewersTips, String contributedBy) {
+        this.id = id;
+        this.name = name;
+        this.tagline = tagline;
+        this.firstBrewed = firstBrewed;
+        this.description = description;
+        this.imageUrl = imageUrl;
+        this.abv = abv;
+        this.attenuationLevel = attenuationLevel;
+        this.brewersTips = brewersTips;
+        this.contributedBy = contributedBy;
     }
-
 }
+
+
 
 
