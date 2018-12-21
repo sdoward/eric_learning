@@ -114,6 +114,7 @@ public class Brewery {
         this.longitude = longitude;
     }
 
+
     public String getWebsiteUrl() {
         return websiteUrl;
     }
