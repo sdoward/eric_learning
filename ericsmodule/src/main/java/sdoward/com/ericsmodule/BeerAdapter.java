@@ -43,17 +43,17 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.ViewHolder> {
           Beer beer = beers.get(i);
 
         Glide.with(context)
-                .load(beer.imageUrl)
+                .load(beer.getImageUrl())
                 .into(beerViewHolder.imageView);
 
         //beerViewHolder.imageView.setImageBitmap(beer.image_url);
-        beerViewHolder.IdTextView.setText(String.valueOf(beer.id));
-        beerViewHolder.nameTextView.setText(beer.name);
-        beerViewHolder.taglineTextView.setText(beer.tagline);
-        beerViewHolder.firstBrewTextView.setText(beer.firstBrewed);
-        beerViewHolder.abvTextView.setText(String.valueOf(beer.abv));
-        beerViewHolder.attenuationLevelTextView.setText(String.valueOf(beer.attenuationLevel));
-        beerViewHolder.descriptionTextView.setText(beer.description);
+        beerViewHolder.IdTextView.setText(String.valueOf(beer.getId()));
+        beerViewHolder.nameTextView.setText(beer.getName());
+        beerViewHolder.taglineTextView.setText(beer.getTagline());
+        beerViewHolder.firstBrewTextView.setText(beer.getFirstBrewed());
+        beerViewHolder.abvTextView.setText(String.valueOf(beer.getAbv()));
+        beerViewHolder.attenuationLevelTextView.setText(String.valueOf(beer.getAttenuationLevel()));
+        beerViewHolder.descriptionTextView.setText(beer.getDescription());
 
     }
 
