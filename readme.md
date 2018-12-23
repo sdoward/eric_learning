@@ -30,3 +30,5 @@ Below are the tasks to complete in order to make a functioning android app. I wi
 - [Task8 - Naming Conventions and Annotations](https://github.com/sdoward/eric_learning/blob/master/tasks/task8.md)
 
 - [Task9 - Getters and Setters](https://github.com/sdoward/eric_learning/blob/master/tasks/task9.md)
+
+- [Task10 - Model, View, Presenter (MVP) pattern](https://github.com/sdoward/eric_learning/blob/master/tasks/task10.md)

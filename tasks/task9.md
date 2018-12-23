@@ -9,7 +9,7 @@ Before we do that we need to introduce access modifiers. This video will help wi
 
 https://www.youtube.com/watch?v=aRQRV2PMHtk&list=PLr6-GrHUlVf9SIx5cDhoEMknias5Xyv67&index=18
 
-### Steps to complete
+### Objective
 
 Add access modifiers to your data class and add the corresponding getters and setters
 

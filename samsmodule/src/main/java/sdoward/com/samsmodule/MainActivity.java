@@ -6,22 +6,15 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BreweryView {
 
     RecyclerView recyclerView;
-    BreweriesService breweriesService = new Retrofit.Builder()
-            .baseUrl("https://api.openbrewerydb.org/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(BreweriesService.class);
+    BreweryPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,19 +24,27 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, 1);
         recyclerView.addItemDecoration(dividerItemDecoration);
-        breweriesService.getBreweries()
-                .enqueue(new Callback<List<Brewery>>() {
-                    @Override
-                    public void onResponse(Call<List<Brewery>> call, Response<List<Brewery>> response) {
-                        List<Brewery> breweries = response.body();
-                        BreweryAdapter breweryAdapter = new BreweryAdapter(breweries);
-                        recyclerView.setAdapter(breweryAdapter);
-                    }
+        setUpPresenter();
+        presenter.start();
+    }
 
-                    @Override
-                    public void onFailure(Call<List<Brewery>> call, Throwable throwable) {
-                        Log.d("Main activity", "unable to get data", throwable);
-                    }
-                });
+    private void setUpPresenter() {
+        BreweriesService breweriesService = new Retrofit.Builder()
+                .baseUrl("https://api.openbrewerydb.org/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(BreweriesService.class);
+        presenter = new BreweryPresenter(breweriesService, this);
+    }
+
+    @Override
+    public void showError(Throwable throwable) {
+        Log.e("qwer", "error when displaying breweries", throwable);
+    }
+
+    @Override
+    public void displayBreweries(List<Brewery> breweries) {
+        BreweryAdapter breweryAdapter = new BreweryAdapter(breweries);
+        recyclerView.setAdapter(breweryAdapter);
     }
 }
