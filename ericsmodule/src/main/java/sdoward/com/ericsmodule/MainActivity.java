@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements BeerView {
 
     @Override
     public void displayBeers(List<Beer> beers) {
-        BeerAdapter beerAdapter= new BeerAdapter(this);
+        BeerAdapter beerAdapter= new BeerAdapter(beers,this);
         recyclerView.setAdapter(beerAdapter);
 
     }
