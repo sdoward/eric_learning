@@ -19,9 +19,8 @@ public class BeerAdapter extends RecyclerView.Adapter<BeerAdapter.ViewHolder> {
     private  List<Beer> beers;
     private Context context;
 
-    public BeerAdapter(List<Beer> beers, Context context){
-
-        this.beers=beers;
+    public BeerAdapter(List<Beer> beers, Context context) {
+        this.beers = beers;
         this.context = context;
     }
 

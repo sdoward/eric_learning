@@ -16,14 +16,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BeerView {
 
     RecyclerView recyclerView;
-    BeerService beerService = new Retrofit.Builder()
-            .baseUrl("https://api.punkapi.com/v2/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(BeerService.class);
+    BeerPresenter presenter;
 
 
     @Override
@@ -34,20 +30,32 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, 1);
         recyclerView.addItemDecoration(dividerItemDecoration);
-        beerService.getBeer()
-               .enqueue(new Callback<List<Beer>>() {
-                   @Override
-                   public void onResponse(Call<List<Beer>> call, Response<List<Beer>> response) {
-                       List<Beer> beer= response.body();
-                       BeerAdapter beerAdapter= new BeerAdapter(beer,MainActivity.this);
-                       recyclerView.setAdapter(beerAdapter);
+        setUpPresenter();
+        presenter.start();
+
                                          }
 
-                   @Override
-                   public void onFailure(Call<List<Beer>> call, Throwable throwable) {
-                       Log.e("Main activity", "Unable to get data", throwable);
+    private void setUpPresenter() {
+        BeerService beerService = new Retrofit.Builder()
+                .baseUrl("https://api.punkapi.com/v2/beers")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(BeerService.class);
+        presenter = new BeerPresenter(beerService, this);
+    }
 
-                   }
-               });
+
+    @Override
+    public void showError(Throwable throwable) {
+        Log.e("qwer", "error when displaying beers", throwable);
+    }
+
+
+
+    @Override
+    public void displayBeers(List<Beer> beers) {
+        BeerAdapter beerAdapter= new BeerAdapter(beers,this);
+        recyclerView.setAdapter(beerAdapter);
+
     }
 }
