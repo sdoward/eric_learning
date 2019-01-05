@@ -32,3 +32,5 @@ Below are the tasks to complete in order to make a functioning android app. I wi
 - [Task9 - Getters and Setters](https://github.com/sdoward/eric_learning/blob/master/tasks/task9.md)
 
 - [Task10 - Model, View, Presenter (MVP) pattern](https://github.com/sdoward/eric_learning/blob/master/tasks/task10.md)
+
+- [Task11 - Math Operators and Loops](https://github.com/sdoward/eric_learning/blob/master/tasks/task11.md)

@@ -6,6 +6,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.TextView;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -14,6 +15,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements BreweryView {
 
     RecyclerView recyclerView;
+    TextView breweryCountTextView;
     BreweryPresenter presenter;
 
     @Override
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements BreweryView {
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        breweryCountTextView = findViewById(R.id.breweryCountTextView);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, 1);
         recyclerView.addItemDecoration(dividerItemDecoration);
         setUpPresenter();
@@ -46,5 +49,10 @@ public class MainActivity extends AppCompatActivity implements BreweryView {
     public void displayBreweries(List<Brewery> breweries) {
         BreweryAdapter breweryAdapter = new BreweryAdapter(breweries);
         recyclerView.setAdapter(breweryAdapter);
+    }
+
+    @Override
+    public void displayBreweryCount(int breweryCount) {
+        breweryCountTextView.setText(String.valueOf(breweryCount));
     }
 }

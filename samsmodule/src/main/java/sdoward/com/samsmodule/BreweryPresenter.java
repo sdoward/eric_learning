@@ -24,6 +24,7 @@ public class BreweryPresenter {
                     public void onResponse(Call<List<Brewery>> call, Response<List<Brewery>> response) {
                         List<Brewery> breweries = response.body();
                         breweryView.displayBreweries(breweries);
+                        breweryView.displayBreweryCount(breweries.size());
                     }
 
                     @Override
