@@ -1,5 +1,6 @@
 package sdoward.com.ericsmodule;
 
+import android.icu.text.UnicodeSetSpanner;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements BeerView {
 
     RecyclerView recyclerView;
     BeerPresenter presenter;
+    TextView beerPercentageTextView;
 
 
     @Override
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements BeerView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView=findViewById(R.id.recyclerView);
+        beerPercentageTextView=findViewById(R.id.beerPercentageTextView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, 1);
         recyclerView.addItemDecoration(dividerItemDecoration);
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements BeerView {
 
     private void setUpPresenter() {
         BeerService beerService = new Retrofit.Builder()
-                .baseUrl("https://api.punkapi.com/v2/beers")
+                .baseUrl("https://api.punkapi.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(BeerService.class);
@@ -58,4 +61,6 @@ public class MainActivity extends AppCompatActivity implements BeerView {
         recyclerView.setAdapter(beerAdapter);
 
     }
+
+     public void displaybeerCount (int beerCount) { beerPercentageTextView.setText(String.valueOf(beerCount));}
 }
