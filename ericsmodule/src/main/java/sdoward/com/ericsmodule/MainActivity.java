@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements BeerView {
 
     private void setUpPresenter() {
         BeerService beerService = new Retrofit.Builder()
-                .baseUrl("https://api.punkapi.com/")
+                .baseUrl("https://api.punkapi.com/v2/beers")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(BeerService.class);
@@ -62,5 +62,12 @@ public class MainActivity extends AppCompatActivity implements BeerView {
 
     }
 
-     public void displaybeerCount (int beerCount) { beerPercentageTextView.setText(String.valueOf(beerCount));}
-}
+    @Override
+    public void displayAverageBeerPercentage(double beerPercentage) {
+
+        beerPercentageTextView.setText(String.valueOf(beerPercentage)); }
+        
+    }
+
+
+
