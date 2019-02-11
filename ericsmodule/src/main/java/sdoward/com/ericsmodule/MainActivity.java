@@ -19,6 +19,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements BeerView {
 
     RecyclerView recyclerView;
+    TextView averageBeerPercentageTextView;
     BeerPresenter presenter;
 
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements BeerView {
         setContentView(R.layout.activity_main);
         recyclerView=findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        averageBeerPercentageTextView=findViewById(R.id.averageBeerPercentageTextView);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, 1);
         recyclerView.addItemDecoration(dividerItemDecoration);
         setUpPresenter();
@@ -37,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements BeerView {
 
     private void setUpPresenter() {
         BeerService beerService = new Retrofit.Builder()
-                .baseUrl("https://api.punkapi.com/v2/beers")
+                .baseUrl("https://api.punkapi.com/beers")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(BeerService.class);
@@ -58,4 +60,11 @@ public class MainActivity extends AppCompatActivity implements BeerView {
         recyclerView.setAdapter(beerAdapter);
 
     }
+
+    @Override
+    public void displayAverageBeerPercentage(double beerPercentage) {
+
+    }
+
+
 }
